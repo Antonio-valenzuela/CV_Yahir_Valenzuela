@@ -1,0 +1,401 @@
+/* =========================================================
+   Tipografía
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =========================================================
+   Paleta C-Level (High-Hire Rate)
+   ========================================================= */
+:root{
+  --bg-body:#f1f5f9;
+  --bg-card:#ffffff;
+  --text-main:#0f172a;
+  --text-muted:#64748b;
+  --primary:#1e3a8a;
+  --primary-light:#eff6ff;
+  --border:#e2e8f0;
+
+  --shadow-soft: 0 4px 6px -1px rgba(0,0,0,.05), 0 2px 4px -1px rgba(0,0,0,.03);
+  --shadow-card: 0 2px 4px rgba(0,0,0,.02);
+  --shadow-hover: 0 10px 15px -3px rgba(0,0,0,.05);
+}
+
+/* Sidebar que acompaña el scroll */
+@media (min-width: 768px){
+  .print-sidebar{
+    position: sticky;
+    top: 24px;               /* separación desde arriba */
+    align-self: flex-start;  /* evita que se estire en flex */
+    height: fit-content;     /* que mida solo lo que ocupa */
+    max-height: calc(100vh - 48px);
+    
+  }
+}
+@media (min-width: 768px){
+  .print-grid{
+    align-items: flex-start; /* mejor con sticky */
+  }
+}
+/* En impresión no conviene sticky */
+@media print{
+  .print-sidebar{
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+/* =========================================================
+   Base
+   ========================================================= */
+*{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family:'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+a{ color: var(--primary); text-decoration:none; font-weight:700; }
+a:hover{ text-decoration:underline; }
+
+.no-print{}
+.print-only{ display:none; }
+
+/* =========================================================
+   Cards
+   ========================================================= */
+.sidebar-card{
+  background-color: var(--bg-card);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+}
+
+.content-card{
+  background-color: var(--bg-card);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.content-card:hover{
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   Titles / Text helpers
+   ========================================================= */
+.section-title{
+  color: var(--primary);
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+}
+
+/* Header main layout */
+.head{
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 768px){
+  .head{ flex-direction: row; justify-content: space-between; align-items:flex-start; }
+  .head-left{ flex: 1; }
+}
+
+/* Contact block */
+.contact{
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.ico{
+  color: var(--primary);
+  width: 16px;
+  text-align:center;
+  margin-right: 6px;
+}
+
+/* Tag puesto */
+.tag-outline{
+  display:inline-block;
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+  padding: .25rem 1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: .85rem;
+}
+
+/* Stack line */
+.stackline{
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 12px;
+}
+
+/* Bullets limpias */
+.bullets{
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #475569;
+  font-size: 14px;
+}
+.bullets li{ margin: 6px 0; }
+.bullets li::marker{ color: var(--primary); }
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn-solid{
+  background-color: var(--primary);
+  color: white;
+  padding: 0.45rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity .2s ease, transform .08s ease;
+}
+.btn-solid:hover{ opacity:.92; text-decoration:none; }
+.btn-solid:active{ transform: translateY(1px); }
+
+.btn-pdf{
+  background-color: var(--primary);
+  color: white;
+  padding: 0.55rem 1rem;
+  border-radius: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+  box-shadow: 0 8px 14px rgba(30,58,138,.18);
+  transition: filter .2s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-pdf:hover{ filter: brightness(.95); }
+
+/* =========================================================
+   Avatar
+   ========================================================= */
+.avatar-wrap{
+  width: 128px;
+  height: 128px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 4px solid var(--primary-light);
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  background:#fff;
+}
+.avatar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================================
+   Sidebar typography
+   ========================================================= */
+.side-h2{
+  font-size: 20px;
+  font-weight: 800;
+  color:#1f2937;
+  margin-bottom: 14px;
+}
+.side-strong{
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+.side-muted{
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* =========================================================
+   Skills bars
+   ========================================================= */
+.skill-row{
+  font-size: 12px;
+  font-weight: 800;
+  color:#334155;
+}
+.progress-track{
+  background-color: #e2e8f0;
+  height: 6px;
+  border-radius: 999px;
+  width: 100%;
+  margin-top: 6px;
+  overflow: hidden;
+}
+.progress-fill{
+  background-color: var(--primary);
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* =========================================================
+   Languages card (sidebar)
+   ========================================================= */
+.lang-card{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary-light);
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #dbeafe;
+}
+.lang-col{
+  width: 50%;
+  text-align:center;
+}
+.lang-split{
+  border-right: 1px solid rgba(30,58,138,.18);
+}
+.lang-big{
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--primary);
+}
+.lang-small{
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* =========================================================
+   Year chip
+   ========================================================= */
+.chip-year{
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 900;
+  padding: 4px 8px;
+  border-radius: 10px;
+  border: 1px solid #dbeafe;
+}
+
+/* Print link text */
+.repo-print{
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary);
+  word-break: break-word;
+}
+
+/* =========================================================
+   Lenguajes más usados (compacto, sin tabla/bytes)
+   ========================================================= */
+.langtop{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.langtop li{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:8px 12px;
+  align-items:center;
+}
+.langname{
+  font-weight:900;
+  color: var(--text-main);
+  font-size: 13px;
+}
+.langpct{
+  font-weight:900;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.langtop .bar-track{
+  grid-column: 1 / -1;
+  height: 8px;
+  background:#e2e8f0;
+  border-radius:999px;
+  overflow:hidden;
+}
+.langtop .bar-fill{
+  height:100%;
+  background: var(--primary);
+  border-radius:999px;
+}
+
+/* =========================================================
+   Print (PDF 1 página, estable)
+   ========================================================= */
+@media print{
+  body{ background:#fff !important; margin:0; padding:0; }
+  .no-print{ display:none !important; }
+  .print-only{ display:block !important; }
+
+  .sidebar-card{
+    box-shadow:none !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 0 !important;
+  }
+
+  .content-card{
+    box-shadow:none !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border) !important;
+    border-radius: 0 !important;
+    break-inside: avoid;
+  }
+  .content-card:last-child{ border-bottom:none !important; }
+
+  .tag-outline{
+    border:none !important;
+    padding:0 !important;
+    color: var(--text-main) !important;
+    font-size: 1rem !important;
+    margin-bottom: .5rem !important;
+  }
+
+  .lang-card{
+    background: transparent !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  .progress-track{
+    border: 1px solid #cbd5e1;
+    background: transparent !important;
+  }
+  .progress-fill{
+    background-color: #64748b !important;
+  }
+
+  .langtop .bar-track{
+    background: transparent !important;
+    border:1px solid #cbd5e1;
+  }
+  .langtop .bar-fill{
+    background:#64748b !important;
+  }
+}

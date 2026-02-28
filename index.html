@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Yahir Valenzuela - Backend Developer</title>
+
+  <!-- Tailwind opcional (puedes quitarlo si no lo usas en otras partes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="./css/styles.css" />
+<script src="./js/main.js" defer></script>
+</head>
+
+<body class="p-4 md:p-8">
+
+  <!-- Botón Exportar (solo web) -->
+  <div class="max-w-5xl mx-auto mb-6 flex justify-end no-print">
+    <button onclick="window.print()" class="btn-pdf">
+      <i class="fas fa-file-pdf mr-2"></i> Exportar a PDF (ATS)
+    </button>
+  </div>
+
+  <!-- Contenedor principal -->
+  <div class="max-w-5xl mx-auto print-grid flex flex-col md:flex-row gap-8">
+
+    <!-- =========================
+         SIDEBAR
+         ========================= -->
+    <aside class="print-sidebar w-full md:w-[280px] sidebar-card p-8 flex flex-col gap-8">
+
+      <!-- Foto -->
+      <div class="flex justify-center">
+        <div class="avatar-wrap">
+          <img src="https://surl.li/hmjwkz" alt="Yahir Valenzuela" class="avatar-img" />
+        </div>
+      </div>
+
+      <!-- Educación -->
+      <section>
+        <h2 class="side-h2">Educación</h2>
+        <div>
+          <p class="side-strong">Ingeniería en Sistemas Computacionales</p>
+          <p class="side-muted">TecMM Zapopan | 2023 - 2027</p>
+        </div>
+      </section>
+
+      <!-- Habilidades (barras) -->
+      <section>
+        <h2 class="side-h2">Habilidades</h2>
+
+        <div class="space-y-4">
+          <div>
+            <div class="skill-row"><span>Backend (C# / .NET)</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+          </div>
+
+          <div>
+            <div class="skill-row"><span>SQL & Bases de Datos</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+          </div>
+
+          <div>
+            <div class="skill-row"><span>Next.js & APIs REST</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width: 80%;"></div></div>
+          </div>
+
+          <div>
+            <div class="skill-row"><span>Docker & Git</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Idiomas -->
+      <section>
+        <h2 class="side-h2">Idiomas</h2>
+        <div class="lang-card">
+          <div class="lang-col lang-split">
+            <div class="lang-big">NAT</div>
+            <div class="lang-small">Español</div>
+          </div>
+          <div class="lang-col">
+            <div class="lang-big">B2</div>
+            <div class="lang-small">Inglés Técnico</div>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- =========================
+         MAIN
+         ========================= -->
+    <main class="print-main w-full flex-1 flex flex-col gap-6">
+
+      <!-- Encabezado -->
+      <header class="head border-b border-slate-200 pb-6 pt-2">
+        <div class="head-left">
+          <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Yahir Valenzuela</h1>
+          <div class="tag-outline mb-4">Backend Developer Intern</div>
+
+          <p class="text-sm text-slate-600 leading-relaxed pr-4 text-justify">
+            Estudiante de Ingeniería en Sistemas enfocado en arquitectura backend y normalización de bases de datos.
+            Experiencia técnica comprobable construyendo <strong>APIs REST y sistemas CRUD (C#, Next.js, SQL)</strong>.
+            Enfocado en integridad de datos, modelado relacional y buenas prácticas para entornos de producción.
+          </p>
+        </div>
+
+        <!-- Contacto -->
+        <div class="contact">
+          <p><i class="fas fa-map-marker-alt ico"></i> Zapopan, Jalisco, MX</p>
+          <p><i class="fas fa-envelope ico"></i> valenzuelayahir13@gmail.com</p>
+          <p><i class="fab fa-github ico"></i> github.com/Antonio-valenzuela</p>
+          <p class="pt-1">
+            <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+            <a href="https://antonio-valenzuela.notion.site" target="_blank" rel="noopener noreferrer">Portafolio</a>
+          </p>
+        </div>
+      </header>
+
+      <!-- Proyectos -->
+      <section>
+        <h2 class="section-title">Proyectos Destacados (Ingeniería)</h2>
+
+        <div class="space-y-4">
+          <div class="content-card p-5">
+            <div class="flex justify-between items-start mb-1">
+              <h3 class="text-base font-bold text-slate-900">API REST - Jurídico Radar</h3>
+              <span class="text-xs font-bold text-slate-500">2025</span>
+            </div>
+
+            <p class="stackline">Next.js | Prisma ORM | PostgreSQL | Docker</p>
+
+            <ul class="bullets">
+              <li>Modelado relacional (8 entidades con 1:N y N:M) y migraciones controladas con Prisma.</li>
+              <li>Entorno reproducible con Docker + compose para equipo de 4, evitando “it works on my machine”.</li>
+              <li>Optimización por paginación e índices: mejora ~20% en pruebas locales.</li>
+            </ul>
+          </div>
+
+          <div class="content-card p-5">
+            <div class="flex justify-between items-start mb-1">
+              <h3 class="text-base font-bold text-slate-900">Sistema Integral de Gestión de Inventarios</h3>
+              <span class="text-xs font-bold text-slate-500">2024</span>
+            </div>
+
+            <p class="stackline">C# (WinForms) | ADO.NET | MySQL</p>
+
+            <ul class="bullets">
+              <li>Arquitectura MVC básica; 15+ operaciones CRUD con validaciones consistentes.</li>
+              <li>Esquema 3FN en 12 tablas: integridad y menor duplicidad en datos.</li>
+              <li>Manejo de excepciones SQL: captura del 100% de errores de inserción en pruebas.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lenguajes más usados (SIN bytes) -->
+      <section>
+        <h2 class="section-title">Lenguajes más usados</h2>
+
+        <div class="content-card p-5">
+          <ul class="langtop">
+  <li>
+    <span class="langname">HTML</span>
+    <span class="langpct">80%</span>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:80%"></div>
+    </div>
+  </li>
+
+  <li>
+    <span class="langname">C#</span>
+    <span class="langpct">85%</span>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:85%"></div>
+    </div>
+  </li>
+
+  <li>
+    <span class="langname">Python</span>
+    <span class="langpct">70%</span>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:70%"></div>
+    </div>
+  </li>
+
+  <li>
+    <span class="langname">CSS</span>
+    <span class="langpct">75%</span>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:75%"></div>
+    </div>
+  </li>
+
+  <li>
+    <span class="langname">JavaScript</span>
+    <span class="langpct">72%</span>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:72%"></div>
+    </div>
+  </li>
+
+  <li>
+    <span class="langname">C++</span>
+    <span class="langpct">60%</span>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:60%"></div>
+    </div>
+  </li>
+</ul>
+        </div>
+      </section>
+
+      <!-- Certificaciones + Repos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+
+        <section>
+          <h2 class="section-title">Certificaciones</h2>
+
+          <div class="space-y-3">
+            <div class="content-card p-4 flex justify-between items-center">
+              <span class="text-sm font-bold text-slate-800">AWS Cloud Practitioner</span>
+              <span class="chip-year">2026</span>
+            </div>
+            <div class="content-card p-4 flex justify-between items-center">
+              <span class="text-sm font-bold text-slate-800">Google Data Analytics</span>
+              <span class="chip-year">2025</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Repositorios Clave</h2>
+
+          <div class="content-card p-4">
+            <h4 class="text-sm font-bold text-slate-800 mb-1">Jurídico-Radar (Backend)</h4>
+            <p class="text-xs text-slate-500 mb-3">
+              API con modelo relacional y entorno Docker para despliegue reproducible.
+            </p>
+
+            <a href="https://github.com/Antonio-valenzuela/juridico-radar" target="_blank" rel="noopener noreferrer" class="btn-solid no-print">
+              <i class="fab fa-github mr-1"></i> Ver Repositorio
+            </a>
+
+            <div class="print-only repo-print">
+              github.com/Antonio-valenzuela/juridico-radar
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>
