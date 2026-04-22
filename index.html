@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / ATS metadata -->
+  <title>Yahir Valenzuela | Backend Developer Junior · C# · .NET · Node.js · PostgreSQL · Docker · Zapopan</title>
+  <meta name="description" content="Estudiante de Ingeniería en Sistemas Computacionales (TecNM Zapopan, 6.° semestre). Backend con C#/.NET, Node.js, Express, PostgreSQL, MySQL, Docker y Git. Disponible para servicio social, prácticas profesionales y programas trainee." />
+  <meta name="keywords" content="Backend Developer, Junior Developer, Trainee, Prácticas Profesionales, Servicio Social, Software Development, C#, .NET, ADO.NET, Node.js, Express, PostgreSQL, MySQL, MariaDB, SQL, Docker, Git, GitHub, Linux, REST API, REST APIs, Web Development, Database Design, Data Modeling, Object-Oriented Programming, Problem Solving, Agile, Scrum, Technical Documentation, Team Collaboration, Continuous Learning, Zapopan, Guadalajara, México" />
+  <meta name="author" content="Yahir Valenzuela" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Yahir Valenzuela — Backend Developer Junior" />
+  <meta property="og:description" content="ISC 6.° semestre · C# · .NET · Node.js · PostgreSQL · Docker · Disponible para trainee / servicio social" />
+  <meta property="profile:first_name" content="Antonio Yahir" />
+  <meta property="profile:last_name" content="Valenzuela" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+
+<!-- ===================================================
+     BARRA DE CONTROLES (no se imprime en PDF)
+=================================================== -->
+<div class="controls no-print" role="toolbar" aria-label="Opciones del CV">
+
+  <button class="btn-ctrl" id="btn-lang" onclick="toggleLang()" type="button" aria-label="Cambiar idioma">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+      <circle cx="8" cy="8" r="6.5"/>
+      <path d="M8 1.5c-2 2-3 4-3 6.5s1 4.5 3 6.5M8 1.5c2 2 3 4 3 6.5s-1 4.5-3 6.5M1.5 8h13"/>
+    </svg>
+    <span id="lang-label">Translate (ES/EN)</span>
+  </button>
+
+  <button class="btn-ctrl" id="btn-theme" onclick="toggleTheme()" type="button" aria-label="Cambiar tema">
+    <svg id="icon-theme" viewBox="0 0 16 16" fill="currentColor" width="14" height="14" aria-hidden="true">
+      <path id="icon-path" d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-8a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 3zm0 9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 12zm4.95-7.364a.5.5 0 0 1 0 .707l-.707.707a.5.5 0 1 1-.707-.707l.707-.707a.5.5 0 0 1 .707 0zM4.464 11.536a.5.5 0 0 1 0 .707l-.707.707a.5.5 0 1 1-.707-.707l.707-.707a.5.5 0 0 1 .707 0zm7.729-3.536a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1A.5.5 0 0 1 3 8zm9.657 2.757a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 1 1 .707-.707l.707.707a.5.5 0 0 1 0 .707zM4.95 4.95a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 1 1 .707-.707l.707.707a.5.5 0 0 1 0 .707z"/>
+    </svg>
+    <span id="theme-label" data-es="Modo oscuro" data-en="Dark mode">Modo oscuro</span>
+  </button>
+
+  <button class="btn-ctrl btn-primary" onclick="exportPDF()" type="button">
+    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+    </svg>
+    <span data-es="Exportar PDF (ATS)" data-en="Export PDF (ATS)">Exportar PDF (ATS)</span>
+  </button>
+
+</div>
+
+<!-- ===================================================
+     CV — layout dos columnas + cabecera ATS print
+=================================================== -->
+<div class="cv" role="main">
+
+  <!-- ================== SIDEBAR ================== -->
+  <aside class="sidebar" aria-label="Información personal y habilidades">
+
+    
+
+    <!-- Formación -->
+    <div class="s-sec" aria-labelledby="s-edu">
+      <h2 class="s-label" id="s-edu" data-es="Formación" data-en="Education">Formación</h2>
+      <div>
+        <p class="edu-degree"
+           data-es="Ing. en Sistemas Computacionales"
+           data-en="Computer Systems Engineering">Ing. en Sistemas Computacionales</p>
+        <p class="edu-meta">TecNM — Campus Zapopan</p>
+        <p class="edu-meta"
+           data-es="2023 – presente · 6.° semestre"
+           data-en="2023 – present · 6th semester">2023 – presente · 6.° semestre</p>
+        <p class="edu-courses"
+           data-es="Estructuras de Datos · Bases de Datos · POO · Ing. de Software · Sistemas Operativos · Redes"
+           data-en="Data Structures · Databases · OOP · Software Engineering · Operating Systems · Networks">
+          Estructuras de Datos · Bases de Datos · POO · Ing. de Software · Sistemas Operativos · Redes
+        </p>
+      </div>
+    </div>
+
+    <!-- Stack técnico con chips -->
+    <div class="s-sec" aria-labelledby="s-skills">
+      <h2 class="s-label" id="s-skills" data-es="Stack Técnico" data-en="Tech Stack">Stack Técnico</h2>
+
+      <div class="skill-group">
+        <p class="skill-group-lbl">Backend</p>
+        <div class="chips">
+          <span class="chip hi">C#</span>
+          <span class="chip hi">.NET</span>
+          <span class="chip hi">ADO.NET</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Express</span>
+          <span class="chip">WinForms</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-lbl" data-es="Bases de Datos" data-en="Databases">Bases de Datos</p>
+        <div class="chips">
+          <span class="chip hi">PostgreSQL</span>
+          <span class="chip hi">MySQL</span>
+          <span class="chip hi">MariaDB</span>
+          <span class="chip">SQL Server</span>
+          <span class="chip">Prisma ORM</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-lbl">APIs &amp; Web</p>
+        <div class="chips">
+          <span class="chip hi">REST APIs</span>
+          <span class="chip">Next.js</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-lbl">DevOps &amp; Tools</p>
+        <div class="chips">
+          <span class="chip hi">Docker</span>
+          <span class="chip hi">Git</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">Linux</span>
+          <span class="chip">Render</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-lbl">Soft Skills</p>
+        <div class="chips">
+          <span class="chip">Agile / Scrum</span>
+          <span class="chip">Resolución de problemas</span>
+          <span class="chip">Documentación técnica</span>
+          <span class="chip">Colaboración en equipo</span>
+          <span class="chip">Aprendizaje continuo</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contacto -->
+    <div class="s-sec" aria-labelledby="s-contact">
+      <h2 class="s-label" id="s-contact" data-es="Contacto" data-en="Contact">Contacto</h2>
+      <div class="contact-links">
+        <a href="mailto:yahir.valenzuela@gmail.com" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.756Zm9.436-1.273l-5.803 3.558L16 11.801V4.697Z"/></svg>
+          <span>Gmail</span>
+        </a>
+        <a href="https://github.com/Antonio-valenzuela" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/yahir-valenzuela" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 15 0 14.487 0 13.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.695 0 7.225 0 7.225h2.4z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ================== MAIN CONTENT ================== -->
+  <main class="main-content" aria-label="Experiencia y proyectos">
+
+    <!-- Cabecera ATS (se oculta en pantalla, se imprime en PDF) -->
+    <div class="header-ats no-screen">
+      <h1>Yahir Valenzuela</h1>
+      <p>Backend Developer Junior | C# | .NET | Node.js | PostgreSQL | Docker | API REST | Agile</p>
+      <p>Email: yahir.valenzuela@gmail.com | GitHub: github.com/Antonio-valenzuela | LinkedIn: linkedin.com/in/yahir-valenzuela</p>
+      <p>Disponible para: Prácticas Profesionales · Servicio Social · Programas Trainee</p>
+    </div>
+
+    <!-- Resumen profesional ATS -->
+    <section aria-labelledby="sec-summary">
+      <h2 class="sec-title" id="sec-summary" data-es="Resumen Profesional" data-en="Professional Summary">Resumen Profesional</h2>
+      <p class="summary-text"
+         data-es="Estudiante de 6.° semestre en Ingeniería en Sistemas Computacionales (TecNM Zapopan). Backend con experiencia en C#, .NET Framework, Node.js y Express. Bases de datos: PostgreSQL, MySQL, MariaDB. Infraestructura: Docker, Linux. Control de versiones y colaboración: Git, GitHub. Disponible inmediatamente para prácticas, servicio social o programas trainee. Aprendizaje continuo en resolución de problemas, buenas prácticas de código y arquitectura de sistemas."
+         data-en="6th-semester Computer Systems Engineering student (TecNM Zapopan). Backend developer with hands-on experience in C#, .NET Framework, Node.js, and Express. Databases: PostgreSQL, MySQL, MariaDB. Infrastructure: Docker, Linux. Version control and collaboration: Git, GitHub. Immediately available for internships, social service, or trainee programs. Continuous learner in problem-solving, clean code, and system architecture.">
+        Estudiante de 6.° semestre en Ingeniería en Sistemas Computacionales (TecNM Zapopan). Backend con experiencia en C#, .NET Framework, Node.js y Express. Bases de datos: PostgreSQL, MySQL, MariaDB. Infraestructura: Docker, Linux. Control de versiones y colaboración: Git, GitHub. Disponible inmediatamente para prácticas, servicio social o programas trainee. Aprendizaje continuo en resolución de problemas, buenas prácticas de código y arquitectura de sistemas.
+      </p>
+    </section>
+
+    <!-- ===================================================
+         EXPERIENCIA Y PROYECTOS
+    =================================================== -->
+    <section aria-labelledby="sec-exp">
+      <h2 class="sec-title" id="sec-exp" data-es="Experiencia y Proyectos" data-en="Experience &amp; Projects">Experiencia y Proyectos</h2>
+
+      <div class="exp-list">
+
+        <!-- Proyecto 1: Radar Jurídico -->
+        <div class="exp-item">
+          <div class="exp-head">
+            <h3 class="exp-role"
+                data-es="Desarrollador Full Stack — Radar Jurídico"
+                data-en="Full Stack Developer — Radar Jurídico">
+              Desarrollador Full Stack — Radar Jurídico
+            </h3>
+            <span class="exp-period">2024–2025</span>
+          </div>
+          <p class="exp-company"
+             data-es="Proyecto académico · TecNM Campus Zapopan · Deploy en Render"
+             data-en="Academic project · TecNM Zapopan · Deployed on Render">Proyecto académico · TecNM Campus Zapopan · Deploy en Render</p>
+          <p class="exp-stack">C# · .NET Framework · PostgreSQL · MVC · ADO.NET</p>
+          <ul class="exp-bullets">
+            <li data-es="Implementé plataforma de búsqueda jurídica con base de datos de más de 5,000 sentencias en PostgreSQL, optimizada para búsquedas full-text."
+                data-en="Built a legal search platform with a PostgreSQL database of 5,000+ court decisions, optimized for full-text search.">
+              Implementé plataforma de búsqueda jurídica con base de datos de más de 5,000 sentencias en PostgreSQL, optimizada para búsquedas full-text.
+            </li>
+            <li data-es="Desarrollé API REST con endpoints de búsqueda avanzada, filtros por jurisdicción y clasificación temática."
+                data-en="Developed a REST API with advanced search endpoints, jurisdiction filters, and thematic classification.">
+              Desarrollé API REST con endpoints de búsqueda avanzada, filtros por jurisdicción y clasificación temática.
+            </li>
+            <li data-es="Diseñé esquema de base de datos normalizados y aplicué validaciones de negocio en capa de aplicación."
+                data-en="Designed normalized database schema and applied business logic validation at the application layer.">
+              Diseñé esquema de base de datos normalizados y aplicué validaciones de negocio en capa de aplicación.
+            </li>
+          </ul>
+          <p class="exp-repo">
+            <a href="https://github.com/Antonio-valenzuela/radar-juridico" target="_blank" rel="noopener" class="repo-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>
+              <span data-es="Ver repositorio" data-en="View repository">Ver repositorio</span>
+            </a>
+          </p>
+          <span class="print-url">Repo: github.com/Antonio-valenzuela/radar-juridico</span>
+        </div>
+
+        <!-- Proyecto 2: poc-app-michelle -->
+        <div class="exp-item">
+          <div class="exp-head">
+            <h3 class="exp-role"
+                data-es="Desarrollador Full Stack — poc-app-michelle"
+                data-en="Full Stack Developer — poc-app-michelle">
+              Desarrollador Full Stack — poc-app-michelle
+            </h3>
+            <span class="exp-period">2025–presente</span>
+          </div>
+          <p class="exp-company"
+             data-es="Proyecto académico · TecNM Campus Zapopan"
+             data-en="Academic project · TecNM Zapopan">Proyecto académico · TecNM Campus Zapopan</p>
+          <p class="exp-stack">Node.js · Express · MariaDB · Docker · HTML/CSS/JS · HeidiSQL</p>
+          <ul class="exp-bullets">
+            <li data-es="Implementé sistema de evaluación multi-nivel con rúbrica personalizable según criterios del docente, almacenada en tabla nivelescriterio con 4 niveles de desempeño."
+                data-en="Implemented multi-level evaluation system with customizable rubric based on teacher criteria, stored in nivelescriterio table with 4 performance levels.">
+              Implementé sistema de evaluación multi-nivel con rúbrica personalizable según criterios del docente, almacenada en tabla nivelescriterio con 4 niveles de desempeño.
+            </li>
+            <li data-es="Contenericé frontend y backend con Docker Compose, resolviendo conflictos de puerto y conectividad mediante host.docker.internal en Windows."
+                data-en="Containerized frontend and backend with Docker Compose, resolving port conflicts and connectivity issues via host.docker.internal on Windows.">
+              Contenericé frontend y backend con Docker Compose, resolviendo conflictos de puerto y conectividad mediante host.docker.internal en Windows.
+            </li>
+            <li data-es="Gestión de base de datos MariaDB con HeidiSQL, creación de stored procedures para cálculos de calificaciones por nivel."
+                data-en="MariaDB database management with HeidiSQL, creation of stored procedures for score calculations by level.">
+              Gestión de base de datos MariaDB con HeidiSQL, creación de stored procedures para cálculos de calificaciones por nivel.
+            </li>
+          </ul>
+          <p class="exp-repo">
+            <a href="https://github.com/Antonio-valenzuela/poc-app-michelle" target="_blank" rel="noopener" class="repo-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>
+              <span data-es="Ver repositorio" data-en="View repository">Ver repositorio</span>
+            </a>
+          </p>
+          <span class="print-url">Repo: github.com/Antonio-valenzuela/poc-app-michelle</span>
+        </div>
+
+        <!-- Proyecto 3: Eco-Educa -->
+        <div class="exp-item">
+          <div class="exp-head">
+            <h3 class="exp-role"
+                data-es="Desarrollador Backend — Eco-Educa"
+                data-en="Backend Developer — Eco-Educa">
+              Desarrollador Backend — Eco-Educa
+            </h3>
+            <span class="exp-period">2025–2026</span>
+          </div>
+          <p class="exp-company"
+             data-es="Proyecto académico · TecNM Campus Zapopan · Deploy activo en Render"
+             data-en="Academic project · TecNM Zapopan · Live deployment on Render">Proyecto académico · TecNM Campus Zapopan · Deploy activo en Render</p>
+          <p class="exp-stack">Node.js · Express · PostgreSQL · bcryptjs · Render · GitHub CI/CD</p>
+          <ul class="exp-bullets">
+            <li data-es="Construí plataforma web con módulo de autenticación seguro (hash con bcryptjs), registro de usuarios y persistencia de resultados en PostgreSQL en la nube."
+                data-en="Built a web platform with secure authentication module (bcryptjs hashing), user registration, and result persistence on cloud PostgreSQL.">
+              Construí plataforma web con módulo de autenticación seguro (hash con bcryptjs), registro de usuarios y persistencia de resultados en PostgreSQL en la nube.
+            </li>
+            <li data-es="Desarrollé REST API con endpoints de registro, login y almacenamiento de puntajes, desplegada en Render con CI/CD desde rama main de GitHub."
+                data-en="Developed a REST API with registration, login, and score-persistence endpoints, deployed on Render with CI/CD from GitHub main branch.">
+              Desarrollé REST API con endpoints de registro, login y almacenamiento de puntajes, desplegada en Render con CI/CD desde rama main de GitHub.
+            </li>
+            <li data-es="Depuré errores de ejecución en entorno Linux de producción."
+                data-en="Debugged runtime errors in a Linux production environment.">
+              Depuré errores de ejecución en entorno Linux de producción.
+            </li>
+          </ul>
+          <p class="exp-repo">
+            <a href="https://github.com/Antonio-valenzuela/eco-educa-resultados" target="_blank" rel="noopener" class="repo-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>
+              <span data-es="Ver repositorio" data-en="View repository">Ver repositorio</span>
+            </a>
+          </p>
+          <span class="print-url">Repo: github.com/Antonio-valenzuela/eco-educa-resultados</span>
+        </div>
+
+        <!-- Proyecto 4: ProjectManager -->
+        <div class="exp-item">
+          <div class="exp-head">
+            <h3 class="exp-role"
+                data-es="Desarrollador Full Stack — ProjectManager (Sistema Académico)"
+                data-en="Full Stack Developer — ProjectManager (Academic System)">
+              Desarrollador Full Stack — ProjectManager
+            </h3>
+            <span class="exp-period">2025</span>
+          </div>
+          <p class="exp-company"
+             data-es="Proyecto académico · TecNM Campus Zapopan"
+             data-en="Academic project · TecNM Zapopan">Proyecto académico · TecNM Campus Zapopan</p>
+          <p class="exp-stack">Node.js · Express · MariaDB · Docker Compose · HTML/CSS/JS</p>
+          <ul class="exp-bullets">
+            <li data-es="Desarrollé aplicación web con roles diferenciados (Administrador, Profesor, Alumno) y seguimiento por etapas con control de estados por proyecto."
+                data-en="Built a web application with differentiated roles (Administrator, Teacher, Student) and stage-based tracking with per-project state control.">
+              Desarrollé aplicación web con roles diferenciados (Administrador, Profesor, Alumno) y seguimiento por etapas con control de estados por proyecto.
+            </li>
+            <li data-es="Integré frontend con API RESTful y contenericé el stack completo con Docker Compose aplicando patrón MVC."
+                data-en="Integrated the frontend with a RESTful API and containerized the full stack with Docker Compose using MVC pattern.">
+              Integré frontend con API RESTful y contenericé el stack completo con Docker Compose aplicando patrón MVC.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Proyecto 5: Seguimiento de Tesis -->
+        <div class="exp-item">
+          <div class="exp-head">
+            <h3 class="exp-role"
+                data-es="Desarrollador Desktop — Sistema de Seguimiento de Tesis"
+                data-en="Desktop Developer — Thesis Tracking System">
+              Desarrollador Desktop — Sistema de Seguimiento de Tesis
+            </h3>
+            <span class="exp-period">2024</span>
+          </div>
+          <p class="exp-company"
+             data-es="Proyecto académico · TecNM Campus Zapopan"
+             data-en="Academic project · TecNM Zapopan">Proyecto académico · TecNM Campus Zapopan</p>
+          <p class="exp-stack">C# · WinForms · MySQL · ADO.NET</p>
+          <ul class="exp-bullets">
+            <li data-es="Implementé aplicación de escritorio con gestión por roles y CRUD completo para registrar avances de proyectos de tesis."
+                data-en="Implemented a desktop application with role-based management and full CRUD for tracking thesis project progress.">
+              Implementé aplicación de escritorio con gestión por roles y CRUD completo para registrar avances de proyectos de tesis.
+            </li>
+            <li data-es="Diseñé el modelo de datos y validaciones de negocio para mantener consistencia de estados a lo largo del flujo."
+                data-en="Designed the data model and business validations to maintain state consistency throughout the workflow.">
+              Diseñé el modelo de datos y validaciones de negocio para mantener consistencia de estados a lo largo del flujo.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         CERTIFICACIONES
+    =================================================== -->
+    <section aria-labelledby="sec-certs">
+      <h2 class="sec-title" id="sec-certs"
+          data-es="Certificaciones y Cursos"
+          data-en="Certifications &amp; Courses">Certificaciones y Cursos</h2>
+
+      <div class="certs-list">
+
+        <div class="cert-item">
+          <div>
+            <p class="cert-name"
+               data-es="Git y GitHub: Flujos de Trabajo Profesionales"
+               data-en="Git &amp; GitHub: Professional Workflows">Git y GitHub: Flujos de Trabajo Profesionales</p>
+            <p class="cert-issuer">Platzi</p>
+          </div>
+          <span class="cert-year">2026</span>
+        </div>
+
+        <div class="cert-item">
+          <div>
+            <p class="cert-name"
+               data-es="Gestión de Proyectos y Fundamentos Agile"
+               data-en="Project Management &amp; Agile Fundamentals">Gestión de Proyectos y Fundamentos Agile</p>
+            <p class="cert-issuer">TecNM</p>
+          </div>
+          <span class="cert-year">2025</span>
+        </div>
+
+      </div>
+
+      <a href="https://www.notion.so/b72ff50b47f04ef08913661b53fa76cc?v=7b4d286c530c41498f4b4ab4920f101f" target="_blank" rel="noopener" class="btn-certs">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>
+        <span data-es="Ver portafolio completo en Notion"
+              data-en="View full portfolio on Notion">Ver portafolio completo en Notion</span>
+      </a>
+      <span class="print-url">Portafolio: antonio-valenzuela.notion.site</span>
+
+    </section>
+
+  </main>
+</div>
+
+<footer class="cv-footer no-print">
+  <p>&copy; 2026 Yahir Valenzuela</p>
+</footer>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
